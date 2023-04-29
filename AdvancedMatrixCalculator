@@ -1,0 +1,65 @@
+"
+
+```python
+import numpy as np
+
+class AdvancedMatrixCalculator:
+
+    def __init__(self):
+        self.matrices = {}
+
+    def add_matrix(self, name, matrix):
+        if not isinstance(matrix, np.ndarray):
+            raise ValueError(""Matrix must be a numpy array"")
+        self.matrices[name] = matrix
+
+    def multiply_matrices(self, matrix1_name, matrix2_name):
+        if matrix1_name not in self.matrices or matrix2_name not in self.matrices:
+            raise ValueError(""Matrix not found"")
+
+        result = np.matmul(self.matrices[matrix1_name], self.matrices[matrix2_name])
+        return result
+
+    def determinant(self, matrix_name):
+        if matrix_name not in self.matrices:
+            raise ValueError(""Matrix not found"")
+
+        result = np.linalg.det(self.matrices[matrix_name])
+        return result
+
+    def inverse(self, matrix_name):
+        if matrix_name not in self.matrices:
+            raise ValueError(""Matrix not found"")
+
+        result = np.linalg.inv(self.matrices[matrix_name])
+        return result
+
+    def display_matrix(self, matrix_name):
+        if matrix_name not in self.matrices:
+            raise ValueError(""Matrix not found"")
+
+        print(self.matrices[matrix_name])
+
+
+if __name__ == ""__main__"":
+    calculator = AdvancedMatrixCalculator()
+
+    matrix_A = np.array([[1, 2], [3, 4]])
+    matrix_B = np.array([[5, 6], [7, 8]])
+
+    calculator.add_matrix(""A"", matrix_A)
+    calculator.add_matrix(""B"", matrix_B)
+
+    product = calculator.multiply_matrices(""A"", ""B"")
+    determinant_A = calculator.determinant(""A"")
+    inverse_A = calculator.inverse(""A"")
+
+    print(""Matrix A multiplied by Matrix B:"")
+    print(product)
+    print(""Determinant of Matrix A:"")
+    print(determinant_A)
+    print(""Inverse of Matrix A:"")
+    print(inverse_A)
+```
+
+这是一段使用 Python 编程语言编写的复杂代码，它可以实现矩阵的各种操作，如矩阵乘法、求行列式以及求逆等功能。代码的英文标题是：AdvancedMatrixCalculator"
